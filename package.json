@@ -5,6 +5,8 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
     "dev": "nodemon src/server.js"
   },
   "dependencies": {

@@ -17,7 +17,7 @@ Um diretor de TV precisa exibir em um telão, os tweets que chegam contendo uma 
 
 
 ### Importante
-Para o funcionamento desse repositório é necessário fazer uso do seu BackEnd - [Show Twitter Hashtag - BackEnd](https://github.com/kaueemanuel/show-twitter-hashtag-backend).
+Para o funcionamento desse repositório é necessário fazer uso do seu FrontEnd - [Show Twitter Hashtag - FrontEnd](https://github.com/kaueemanuel/show-twitter-hashtag-frontend).
 
 ## Intalaçao e Inicialização
 ### Instalação
@@ -43,7 +43,7 @@ REACT_APP_SERVER=http://localhost:8888/
 Obs.: Caso faça alteração da porta do servidor lembre-se de alterar nesse arquivo também.
 
 ### Inicialização
-Para iniciar a aplicação certifique-se que o BackEnd esteja rodando [Show Twitter Hashtag - BackEnd](https://github.com/kaueemanuel/show-twitter-hashtag-backend).
+Para iniciar a aplicação certifique-se que o BackEnd esteja rodando [Show Twitter Hashtag - FrontEnd](https://github.com/kaueemanuel/show-twitter-hashtag-frontend).
 
 #### `npm run start`
 ou 
