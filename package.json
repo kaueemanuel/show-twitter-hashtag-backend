@@ -1,7 +1,7 @@
 {
   "name": "teste-globo-front-end",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "app.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
