@@ -1,11 +1,11 @@
 {
   "name": "show-twitter-hashtag-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start:server": "node dist/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
     "dev": "nodemon src/server.js"
   },
