@@ -12,7 +12,7 @@ Um diretor de TV precisa exibir em um telão, os tweets que chegam contendo uma 
 ### Importante
 Para o funcionamento desse repositório é necessário criar um App no [Twitter Development Platform](https://developer.twitter.com/en/docs/basics/getting-started) e um banco de dados MongoDB.
 
-## Intalaçao e Inicialização
+## Instalação e Inicialização
 ### Instalação
 #### Clonar o repositório:
 
@@ -43,15 +43,14 @@ Obs.: substituia os campos em `<>`.
 
 ### Inicialização
 
-#### `npm run start`
+#### `npm run dev`
 ou 
-#### `yarn start` 
+#### `yarn dev` 
 
 Após executar os comandos, basta acessar o [FrontEnd](https://github.com/kaueemanuel/show-twitter-hashtag-frontend).
 
 
 ## Contato
-
 
 Kauê Malheiros - [GitHub](https://github.com/kaueemanuel) - [Linkedin](https://www.linkedin.com/in/kaue-malheiros).
 
