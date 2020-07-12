@@ -1,7 +1,7 @@
 {
-  "name": "teste-globo-front-end",
+  "name": "show-twitter-hashtag-backend",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
