@@ -1,61 +1,60 @@
-## ZHealth Doctor - API [Beck-end]
+<div align="">
+    <h1>Show Twitter Hashtag - BackEnd</h1>
+    Aplicativo para aprovação de tweets de uma determinada hashtag e visualização dos mesmos em um telão.
+</div>
+ 
 
-API desenvolvida apenas para fins de aprendizados e testes.
-
-## Sobre este projeto
-
-A ideia do aplicativo é referente a um desafio proposto a mim, com o seguinte contexto:
-
-_"A ZHealth precisa disponibilizar um serviço para um hospital em que médicos possam cadastrar prescrições médicas para pacientes que realizam uma consulta e necessitam de uma receita com os devidos medicamentos. Para isso a ZHealth foi contratada por um hospital e na reunião técnica sobre o sistema, ficou decidido que o hospital iria se integrar com o sistema da ZHealth via API REST."_
-
-## Começando
-
-### Pré-requisitos
-
-Para executar este projeto no modo de desenvolvimento, você precisará ter um ambiente básico com o NodeJS 8+ instalado. Para saber mais, clique [aqui](https://nodejs.org/en/).
-
-Além disso, você precisará ter o [MongoDB](https://www.mongodb.com/) instalado e em execução na sua máquina.
-
-### Instalando
-
-**Clonando o Repositório**
-
-```
-$ git clone https://github.com/FelipePbi/zhealth_doctor_beck-end
-
-$ cd zhealth_doctor_beck
-```
-
-**Instalando dependências**
-
-```
-$ yarn
-```
-
-_ou_
-
-```
-$ npm install
-```
-
-### Rodando o servidor
-
-Com todas as dependências instaladas e o ambiente configurado corretamente, agora você pode executar o servidor:
-
-```
-$ yarn dev
-```
 
 ## Sobre
+### Desafio
+Um diretor de TV precisa exibir em um telão, os tweets que chegam contendo uma determinada hashtag que varia diariamente. Foi pedido que esses tweets fossem inseridos no telão por um controle: Através de um sistema web que seria comandado pelo pessoal de operações do estúdio, neste caso o mesmo deveria aprovar os tweets que estão chegando para que o mesmo seja exibido. Para essa exibição, deverá obrigatoriamente ter efeito de transição entre os tweets que foram aprovados no sistema de controle.
 
-Este projeto faz parte do meu portfólio pessoal, portanto, ficarei feliz se você puder me fornecer algum feedback sobre o projeto, código, estrutura ou qualquer coisa que você possa relatar que possa me tornar um desenvolvedor melhor!
+### Funcionalidades
+- Monitorar em tempo real tweets de uma hashtag.
+- Aprovar ou reprovar tweets encontrados.
+- Salvar no banco de dados todos os tweets encontrados.
+- Visualizar em um telão os tweets aprovados.
 
-Email: felipexd-2011@hotmail.com
 
-Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/felipe-borges-pbi/)
+### Importante
+Para o funcionamento desse repositório é necessário fazer uso do seu BackEnd - [Show Twitter Hashtag - BackEnd](https://github.com/kaueemanuel/show-twitter-hashtag-backend).
 
-Além disso, você pode usar este projeto como desejar, estudar, fazer melhorias ou ganhar dinheiro com ele!
+## Intalaçao e Inicialização
+### Instalação
+#### Clonar o repositório:
 
-## Licença
+```
+git clone https://github.com/kaueemanuel/show-twitter-hashtag-frontend.git
 
-Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.md](https://github.com/steniowagner/bon-appetit-app/blob/master/LICENSE) para obter detalhes
+cd show-twitter-hashtag-frontend
+```
+
+#### Dependências:
+
+#### `npm install`
+ou
+#### `yarn` 
+
+#### ENV:
+Na raiz do projeto crie um arquivo `.env` e nele escreva a seguinte variável:
+```
+REACT_APP_SERVER=http://localhost:8888/
+```
+Obs.: Caso faça alteração da porta do servidor lembre-se de alterar nesse arquivo também.
+
+### Inicialização
+Para iniciar a aplicação certifique-se que o BackEnd esteja rodando [Show Twitter Hashtag - BackEnd](https://github.com/kaueemanuel/show-twitter-hashtag-backend).
+
+#### `npm run start`
+ou 
+#### `yarn start` 
+
+Após executar os comando se não abrir automaticamente o navegar, basta acessar: [http://localhost:3000](http://localhost:3000).
+
+
+## Contato
+
+
+Kauê Malheiros - [GitHub](https://github.com/kaueemanuel) - [Linkedin](https://www.linkedin.com/in/kaue-malheiros).
+
+Email: kaue.malheiros@gmail.com

@@ -1,13 +1,11 @@
 {
-  "name": "teste-globo-back-end",
+  "name": "teste-globo-front-end",
   "version": "1.0.0",
   "main": "src/server.js",
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles"
+    "dev": "nodemon src/server.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -23,8 +21,6 @@
     "twit": "^2.2.11"
   },
   "devDependencies": {
-    "@sucrase/jest-plugin": "^2.0.0",
-    "@types/jest": "^25.2.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
@@ -33,10 +29,8 @@
     "factory-girl": "^5.0.4",
     "faker": "^4.1.0",
     "faker-br": "^0.2.4",
-    "jest": "^26.0.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
-    "sucrase": "^3.12.1",
-    "supertest": "^4.0.2"
+    "sucrase": "^3.12.1"
   }
 }
