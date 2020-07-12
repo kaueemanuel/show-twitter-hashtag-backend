@@ -14,95 +14,113 @@ class Tweets {
   }
 
   IniciarStream = async (req, res) => {
-    let { hashtag } = req.params;
-    let { estado } = req;
+    try {
+      let { hashtag } = req.params;
+      let { estado } = req;
 
-    if (hashtag[0] !== '#') hashtag = `#${hashtag}`;
+      if (hashtag[0] !== '#') hashtag = `#${hashtag}`;
 
-    estado.hashtag = hashtag;
-    estado.monitorando = true;
+      estado.hashtag = hashtag;
+      estado.monitorando = true;
 
-    await req.io.emit('change', estado);
+      await req.io.emit('change', estado);
 
-    this.stream = this.T.stream('statuses/filter', { track: hashtag });
-    this.stream.on('tweet', async function(tweet) {
-      if (!tweet.text.includes('RT @') && tweet.text.toUpperCase().includes(hashtag.toUpperCase())) {
-        const newTweet = await TweetModel.create({
-          hashtag: hashtag,
-          timestamp: parseInt(tweet.timestamp_ms),
-          nome: tweet.user.name,
-          username: tweet.user.screen_name,
-          text: tweet.text,
-          state: 0,
-        });
+      this.stream = this.T.stream('statuses/filter', { track: hashtag });
+      this.stream.on('tweet', async function(tweet) {
+        if (
+          !tweet.text.includes('RT @') &&
+          tweet.text.toUpperCase().includes(hashtag.toUpperCase())
+        ) {
+          const newTweet = await TweetModel.create({
+            hashtag: hashtag,
+            timestamp: parseInt(tweet.timestamp_ms),
+            nome: tweet.user.name,
+            username: tweet.user.screen_name,
+            text: tweet.text,
+            state: 0,
+          });
 
-        estado.tweets = [...estado.tweets, newTweet];
-        estado.monitorando = true;
-        estado.hashtag = hashtag;
+          estado.tweets = [...estado.tweets, newTweet];
+          estado.monitorando = true;
+          estado.hashtag = hashtag;
 
-        await req.io.emit('change', estado);
-
-      }
-    });
-    return res.json();
+          await req.io.emit('change', estado);
+        }
+      });
+      return res.status(200).json();
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
   };
 
   PararStream = async (req, res) => {
-    let { estado } = req;
-    if (this.stream) {
-      this.stream.stop();
+    try {
+      let { estado } = req;
+      if (this.stream) {
+        this.stream.stop();
+      }
+      estado.monitorando = false;
+      estado.hashtag = '';
+      estado.tweets = [];
+      estado.tweetsAprovados = [];
+      estado.tweetsReprovados = [];
+
+      await req.io.emit('change', estado);
+
+      return res.status(200).json();
+    } catch (error) {
+      return res.status(500).json({ error: error });
     }
-    estado.monitorando = false;
-    estado.hashtag = '';
-    estado.tweets = [];
-    estado.tweetsAprovados = [];
-    estado.tweetsReprovados = [];
-
-    await req.io.emit('change', estado);
-
-    return res.json();
   };
 
   ReprovarTweet = async (req, res) => {
-    let { estado } = req;
-    let { id } = req.params;
+    try {
+      let { estado } = req;
+      let { id } = req.params;
 
-    let allTweets = [...estado.tweetsAprovados, ...estado.tweets];
+      let allTweets = [...estado.tweetsAprovados, ...estado.tweets];
 
-    let reprovado = allTweets.find(item => item._id == id);
-    reprovado.state = -1;
+      let reprovado = allTweets.find(item => item._id == id);
+      reprovado.state = -1;
 
-    estado.tweetsReprovados = [...estado.tweetsReprovados, reprovado];
+      estado.tweetsReprovados = [...estado.tweetsReprovados, reprovado];
 
-    estado.tweetsAprovados = estado.tweetsAprovados.filter(item => item._id != id);
-    estado.tweets = estado.tweets.filter(item => item._id != id);
+      estado.tweetsAprovados = estado.tweetsAprovados.filter(item => item._id != id);
+      estado.tweets = estado.tweets.filter(item => item._id != id);
 
-    await req.io.emit('change', estado);
+      await req.io.emit('change', estado);
 
-    await TweetModel.updateOne({ _id: reprovado._id }, reprovado);
+      await TweetModel.updateOne({ _id: reprovado._id }, reprovado);
 
-    return res.json();
+      return res.status(200).json();
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
   };
 
   AprovarTweet = async (req, res) => {
-    let { estado } = req;
-    let { id } = req.params;
+    try {
+      let { estado } = req;
+      let { id } = req.params;
 
-    let allTweets = [...estado.tweetsReprovados, ...estado.tweets];
+      let allTweets = [...estado.tweetsReprovados, ...estado.tweets];
 
-    let aprovado = allTweets.find(item => item._id == id);
-    aprovado.state = 1;
+      let aprovado = allTweets.find(item => item._id == id);
+      aprovado.state = 1;
 
-    estado.tweetsAprovados = [...estado.tweetsAprovados, aprovado];
+      estado.tweetsAprovados = [...estado.tweetsAprovados, aprovado];
 
-    estado.tweetsReprovados = estado.tweetsReprovados.filter(item => item._id != id);
-    estado.tweets = estado.tweets.filter(item => item._id != id);
+      estado.tweetsReprovados = estado.tweetsReprovados.filter(item => item._id != id);
+      estado.tweets = estado.tweets.filter(item => item._id != id);
 
-    await req.io.emit('change', estado);
+      await req.io.emit('change', estado);
 
-    await TweetModel.updateOne({ _id: aprovado._id }, aprovado);
+      await TweetModel.updateOne({ _id: aprovado._id }, aprovado);
 
-    return res.json();
+      return res.status(200).json();
+    } catch (error) {
+      return res.status(500).json({ error: error });
+    }
   };
 }
 
