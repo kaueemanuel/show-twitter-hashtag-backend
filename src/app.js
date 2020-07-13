@@ -29,7 +29,7 @@ class App {
 
   websockets() {
     this.io.on('connection', socket => {
-      console.log('Cennected', socket.id);
+      console.log('Connected', socket.id);
       socket.emit('init', this.estado);
     });
     this.app.use((req, res, next) => {

@@ -2,7 +2,7 @@
   "name": "show-twitter-hashtag-backend",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "module",
+  "type": "commonjs",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js"
